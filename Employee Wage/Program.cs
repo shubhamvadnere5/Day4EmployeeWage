@@ -6,32 +6,37 @@ using System.Threading.Tasks;
 
 namespace Employee_Wage
 {
-    //UC2
+    //UC3
     class Salary
     {
         public static void Main(string[] args)
         {
-            int IS_FULL_TIME = 1;
+            int IS_PART_TIME = 1;
+            int IS_FULL_TIME = 2;
             int empSalaryPerHr = 20;
             int empPerHrDay = 8;
             int empCheck;
             int salary;
             Random random = new Random();
-            empCheck = random.Next(0, 2);
+            empCheck = random.Next(0, 3);
 
             if (empCheck == IS_FULL_TIME)
             {
-                Console.WriteLine("Present");
+                empPerHrDay = 8;
+            }
+            else if(empCheck == IS_PART_TIME)
+            {
+                
                 empPerHrDay = 8;
             }
             else
             {
-                Console.WriteLine("Absent");
-                empPerHrDay = 0;
+                Console.WriteLine("Employee is Absent");
             }
+
             salary = empSalaryPerHr * empPerHrDay;
-            Console.WriteLine("Salary is:" + salary);
-            Console.ReadLine();
+            Console.WriteLine("Daily employee Salary is:" + salary);
+            Console.ReadLine(); 
         }
 
 
