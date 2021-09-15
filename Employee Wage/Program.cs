@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Employee_Wage
 {
     //UC3
-    class Salary
+    class EmployeeWage
     {
         public static void Main(string[] args)
         {
@@ -20,20 +20,22 @@ namespace Employee_Wage
             Random random = new Random();
             empCheck = random.Next(0, 3);
 
-            if (empCheck == IS_FULL_TIME)
+            switch(empCheck)
             {
-                empPerHrDay = 8;
-            }
-            else if(empCheck == IS_PART_TIME)
-            {
-                
-                empPerHrDay = 8;
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
-            }
+                case 1:
+                    Console.WriteLine("IS_PART_TIME");
+                    empPerHrDay = 8;
+                    break;
+                case 2:
+                    Console.WriteLine("IS_PART_TIME");
+                    empPerHrDay = 4;
+                    break;
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    empPerHrDay = 0;
+                    break;
 
+            }
             salary = empSalaryPerHr * empPerHrDay;
             Console.WriteLine("Daily employee Salary is:" + salary);
             Console.ReadLine(); 
