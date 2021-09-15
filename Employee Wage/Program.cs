@@ -6,52 +6,50 @@ using System.Threading.Tasks;
 
 namespace Employee_Wage
 {
-    //UC5
+    //UC6
     class EmployeeWage
     {
-        public static void Main(string[] args)
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
+        public const int EMP_RATE_PER_HOUR = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        public const int MAX_WORKING_HRS = 100;
+        static void Main(string[] args)
         {
-            int IS_PART_TIME = 1;
-            int IS_FULL_TIME = 2;
-            int empSalaryPerHr = 20;
-            int empPerHrDay = 8;
-            int empworkingdays = 20;
-            int empCheck;
-            int salary;
-           
+            int empHrs = 0;
+            int salary = 0;
+            int EmpPerHrs = 0;
+            int empWorkingDays = 0;
 
-            for (int day = 1; day <=empworkingdays; day++)
+            while (EmpPerHrs <= MAX_WORKING_HRS && empWorkingDays <= NUM_OF_WORKING_DAYS)
             {
+                empWorkingDays++;
                 Random random = new Random();
-                empCheck = random.Next(0, 3);
+                int empCheck = random.Next(0, 3);
 
+               
                 switch (empCheck)
                 {
                     case 1:
                         Console.WriteLine("IS_FULL_TIME");
-                        empPerHrDay = 8;
+                        empHrs = 8;
                         break;
                     case 2:
                         Console.WriteLine("IS_PART_TIME");
-                        empPerHrDay = 4;
+                        empHrs = 4;
                         break;
                     default:
                         Console.WriteLine("Employee is Absent");
-                        empPerHrDay = 0;
+                        empHrs = 0;
                         break;
-
                 }
 
+                EmpPerHrs += empHrs;
+                Console.WriteLine("Days:" + empWorkingDays + "Emp Hrs: " + empHrs);
             }
-
-            
-            salary = empworkingdays * empSalaryPerHr * empPerHrDay;
-            Console.WriteLine("Monthly employee Salary is:" + salary);
-            Console.ReadLine(); 
+            salary = EmpPerHrs * EMP_RATE_PER_HOUR;
+            Console.WriteLine("Total employee Salary:" + salary);
+            Console.ReadLine();
         }
-
-
     }
 }
-
-    
