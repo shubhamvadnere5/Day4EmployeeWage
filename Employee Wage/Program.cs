@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Employee_Wage
 {
-    //UC3
+    //UC5
     class EmployeeWage
     {
         public static void Main(string[] args)
@@ -15,29 +15,38 @@ namespace Employee_Wage
             int IS_FULL_TIME = 2;
             int empSalaryPerHr = 20;
             int empPerHrDay = 8;
+            int empworkingdays = 20;
             int empCheck;
             int salary;
-            Random random = new Random();
-            empCheck = random.Next(0, 3);
+           
 
-            switch(empCheck)
+            for (int day = 1; day <=empworkingdays; day++)
             {
-                case 1:
-                    Console.WriteLine("IS_PART_TIME");
-                    empPerHrDay = 8;
-                    break;
-                case 2:
-                    Console.WriteLine("IS_PART_TIME");
-                    empPerHrDay = 4;
-                    break;
-                default:
-                    Console.WriteLine("Employee is Absent");
-                    empPerHrDay = 0;
-                    break;
+                Random random = new Random();
+                empCheck = random.Next(0, 3);
+
+                switch (empCheck)
+                {
+                    case 1:
+                        Console.WriteLine("IS_FULL_TIME");
+                        empPerHrDay = 8;
+                        break;
+                    case 2:
+                        Console.WriteLine("IS_PART_TIME");
+                        empPerHrDay = 4;
+                        break;
+                    default:
+                        Console.WriteLine("Employee is Absent");
+                        empPerHrDay = 0;
+                        break;
+
+                }
 
             }
-            salary = empSalaryPerHr * empPerHrDay;
-            Console.WriteLine("Daily employee Salary is:" + salary);
+
+            
+            salary = empworkingdays * empSalaryPerHr * empPerHrDay;
+            Console.WriteLine("Monthly employee Salary is:" + salary);
             Console.ReadLine(); 
         }
 
