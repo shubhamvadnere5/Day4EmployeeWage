@@ -9,7 +9,7 @@ namespace Employee_Wage
     //UC6
     class EmployeeWage
     {
-        public const int IS_FULL_TIME = 1;
+        public const int IS_FULL_TIME = 1;   //constants means when you dont want to override existing variables (unchangable and readonly)
         public const int IS_PART_TIME = 2;
         public const int EMP_RATE_PER_HOUR = 20;
         public const int NUM_OF_WORKING_DAYS = 20;
@@ -24,11 +24,11 @@ namespace Employee_Wage
             while (EmpPerHrs <= MAX_WORKING_HRS && empWorkingDays <= NUM_OF_WORKING_DAYS)
             {
                 empWorkingDays++;
-                Random random = new Random();
-                int empCheck = random.Next(0, 3);
+                Random random = new Random(); //predefine random class for generating random values
+                int empCheck = random.Next(0, 3); //for min(0) to max(3) values
 
                
-                switch (empCheck)
+                switch (empCheck)  // switch case evaluates the expression and run the cases accordingly Option = 1 then case 1 will get executed
                 {
                     case 1:
                         Console.WriteLine("IS_FULL_TIME");
