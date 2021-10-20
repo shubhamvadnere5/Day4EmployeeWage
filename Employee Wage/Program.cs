@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeWage
+namespace Empwage
 {
-    class attendence
+    /// <summary>
+    /// UC8 Multiple company
+    /// </summary>
+    class Program
     {
 
         public const int FULL_TIME = 1;
         public const int PART_TIME = 2;
-        public const int MAX_HOURS = 100;
-        public const int MAX_DAYS = 20;
-        public const int PER_HOUR_PAY = 50;
-        public static int EmpWage()
+        public static int EmpWage(string company, int PER_HOUR_PAY, int MAX_HOURS, int MAX_DAYS)
         {
             int EmployeeCheck, HoursPerDay, day = 0, Hours = 0;
             int salary = 0, TotalPay = 0;
@@ -39,7 +39,6 @@ namespace EmployeeWage
                         break;
                 }
                 Hours += HoursPerDay;
-
                 day++;
                 salary = PER_HOUR_PAY * HoursPerDay;
                 Console.WriteLine("salary of Employee per day = " + salary);
@@ -47,16 +46,13 @@ namespace EmployeeWage
             }
             Console.WriteLine("Total Wage of Employee is :{0} in days : {1}", TotalPay, day);
             return TotalPay;
-
         }
         static void Main(string[] arug)
         {
-            EmpWage();
-
-
+            EmpWage("Dmart", 80, 50, 10);
+            EmpWage("Orion", 90, 60, 10);
+            EmpWage("Kmall", 60, 60, 15);
             Console.ReadLine();
         }
-
-
     }
 }
