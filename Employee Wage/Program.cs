@@ -4,52 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Employee_Wage
+namespace EmployeeWage
 {
-    //UC6
-    class EmployeeWage
+    class attendence
     {
-        public const int IS_FULL_TIME = 1;   //constants means when you dont want to override existing variables (unchangable and readonly)
-        public const int IS_PART_TIME = 2;
-        public const int EMP_RATE_PER_HOUR = 20;
-        public const int NUM_OF_WORKING_DAYS = 20;
-        public const int MAX_WORKING_HRS = 100;
-        static void Main(string[] args)
+
+        public const int FULL_TIME = 1;
+        public const int PART_TIME = 2;
+        public const int MAX_HOURS = 100;
+        public const int MAX_DAYS = 20;
+        public const int PER_HOUR_PAY = 50;
+        public static int EmpWage()
         {
-            int empHrs = 0;
-            int salary = 0;
-            int EmpPerHrs = 0;
-            int empWorkingDays = 0;
-
-            while (EmpPerHrs <= MAX_WORKING_HRS && empWorkingDays <= NUM_OF_WORKING_DAYS)
+            int EmployeeCheck, HoursPerDay, day = 0, Hours = 0;
+            int salary = 0, TotalPay = 0;
+            Random random = new Random();
+            while (Hours <= MAX_HOURS && day <= MAX_DAYS)
             {
-                empWorkingDays++;
-                Random random = new Random(); //predefine random class for generating random values
-                int empCheck = random.Next(0, 3); //for min(0) to max(3) values
 
-               
-                switch (empCheck)  // switch case evaluates the expression and run the cases accordingly Option = 1 then case 1 will get executed
+                EmployeeCheck = random.Next(0, 3);
+                switch (EmployeeCheck)
                 {
                     case 1:
-                        Console.WriteLine("IS_FULL_TIME");
-                        empHrs = 8;
+                        Console.WriteLine("full Time  on day :" + day);
+                        HoursPerDay = 8;
                         break;
                     case 2:
-                        Console.WriteLine("IS_PART_TIME");
-                        empHrs = 4;
+                        Console.WriteLine("Part Time on day :" + day);
+                        HoursPerDay = 4;
                         break;
                     default:
-                        Console.WriteLine("Employee is Absent");
-                        empHrs = 0;
+                        Console.WriteLine("Absent on day : " + day);
+                        HoursPerDay = 0;
                         break;
                 }
+                Hours += HoursPerDay;
 
-                EmpPerHrs += empHrs;
-                Console.WriteLine("Days:" + empWorkingDays + "Emp Hrs: " + empHrs);
+                day++;
+                salary = PER_HOUR_PAY * HoursPerDay;
+                Console.WriteLine("salary of Employee per day = " + salary);
+                TotalPay += salary;
             }
-            salary = EmpPerHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("Total employee Salary:" + salary);
+            Console.WriteLine("Total Wage of Employee is :{0} in days : {1}", TotalPay, day);
+            return TotalPay;
+
+        }
+        static void Main(string[] arug)
+        {
+            EmpWage();
+
+
             Console.ReadLine();
         }
+
+
     }
 }
